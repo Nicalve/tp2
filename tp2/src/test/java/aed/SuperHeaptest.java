@@ -2,7 +2,6 @@ package aed;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 public class SuperHeaptest {
-    private Heap<Integer> heap;
     @Test
     void borraruno(){
         Superheap superheap = new Superheap();

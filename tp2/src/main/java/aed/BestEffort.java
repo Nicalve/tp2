@@ -49,7 +49,7 @@ public class BestEffort {
             this.ciudades[actual.origen].addEarnings(actual.gananciaNeta);
             this.ciudades[actual.destino].addLosses(actual.gananciaNeta);
 
-           
+
             if (this.ciudadesMayorGanancia.isEmpty()){
                 this.ciudadesMayorGanancia.add(actual.origen);
             }
@@ -57,7 +57,7 @@ public class BestEffort {
                 this.ciudadesMayorPerdida.add(actual.destino);
             }
 
-            
+
             Ciudad mayorGanancia = this.ciudades[this.ciudadesMayorGanancia.get(0)];
             Ciudad mayorPerdida = this.ciudades[this.ciudadesMayorPerdida.get(0)];
             Ciudad origenActual =  this.ciudades[actual.origen];
@@ -76,9 +76,6 @@ public class BestEffort {
             }else if(mayorPerdida.getLosses() == origenActual.getLosses()){
                 this.ciudadesMayorPerdida.add(actual.destino);
             }
-
-
-           
 
 
             if(this.superavit.tamaño() == 0 ){
@@ -150,6 +147,7 @@ public class BestEffort {
 
             int iDraiz = (int) superavit.consultarRaiz();
             Ciudad mayorSuperavit = this.ciudades[iDraiz];
+            
             if(origenActual.getSuperavit() > mayorSuperavit.getSuperavit()){
                 this.superavit = new Heap<>(this.maxComparator);
                 this.superavit.encolar(actual.origen);
