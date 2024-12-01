@@ -1,7 +1,7 @@
 package aed;
 
 public class Handle implements Comparable<Handle> {
-    private Traslado traslado;
+    private final Traslado traslado;
     private int posOtroHeap;
     private int posPropioHeap;
 

@@ -15,7 +15,7 @@
     <property name="user.country" value="AR"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-22\bin"/>
-    <property name="sun.java.command" value="C:\Users\calve\AppData\Local\Temp\surefire13986649660380826826\surefirebooter-20241201010730109_3.jar C:\Users\calve\AppData\Local\Temp\surefire13986649660380826826 2024-12-01T01-07-29_873-jvmRun1 surefire-20241201010730109_1tmp surefire_0-20241201010730109_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\calve\AppData\Local\Temp\surefire909573351155183534\surefirebooter-20241201012126973_3.jar C:\Users\calve\AppData\Local\Temp\surefire909573351155183534 2024-12-01T01-21-26_814-jvmRun1 surefire-20241201012126973_1tmp surefire_0-20241201012126973_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="test" value="aed.BestEffortTests"/>
     <property name="surefire.test.class.path" value="C:\Users\calve\OneDrive\Escritorio\TPV2\tp2\target\test-classes;C:\Users\calve\OneDrive\Escritorio\TPV2\tp2\target\classes;C:\Users\calve\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.9.2\junit-jupiter-engine-5.9.2.jar;C:\Users\calve\.m2\repository\org\junit\platform\junit-platform-engine\1.9.2\junit-platform-engine-1.9.2.jar;C:\Users\calve\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\calve\.m2\repository\org\junit\platform\junit-platform-commons\1.9.2\junit-platform-commons-1.9.2.jar;C:\Users\calve\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.9.2\junit-jupiter-api-5.9.2.jar;C:\Users\calve\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;"/>
@@ -31,7 +31,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\calve\AppData\Local\Temp\surefire13986649660380826826\surefirebooter-20241201010730109_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\calve\AppData\Local\Temp\surefire909573351155183534\surefirebooter-20241201012126973_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="22.0.2+9-70"/>
@@ -60,7 +60,7 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="66.0"/>
   </properties>
-  <testcase name="testConstructor" classname="aed.BestEffortTests" time="0.082"/>
-  <testcase name="casoBase" classname="aed.BestEffortTests$GananciaPromedio" time="0.004"/>
+  <testcase name="testConstructor" classname="aed.BestEffortTests" time="0.077"/>
+  <testcase name="casoBase" classname="aed.BestEffortTests$GananciaPromedio" time="0.003"/>
   <testcase name="conDecimales" classname="aed.BestEffortTests$GananciaPromedio" time="0.002"/>
 </testsuite>
