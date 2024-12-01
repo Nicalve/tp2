@@ -13,6 +13,7 @@ public class BestEffort {
     private final Comparator<Integer> maxComparator = (a, b) -> b.compareTo(a);
     
     public BestEffort(int cantCiudades, Traslado[] traslados){
+
         this.ciudades = new Ciudad[cantCiudades]; 
         this.superavit = new Heap<>(this.maxComparator);
         this.manager = new Superheap();
@@ -22,22 +23,27 @@ public class BestEffort {
         this.ciudadesMayorPerdida = new ArrayList<>();
 
     for (int i = 0 ; i<cantCiudades;i++){
+
         Ciudad nuevaciudad = new Ciudad(i);
         this.ciudades[i] = nuevaciudad;
     }
     for(Traslado t :traslados){
+
         manager.superencolar(t);
     }
    
     }
 
     public void registrarTraslados(Traslado[] traslados){   
+
         for(Traslado t :traslados){
+
             manager.superencolar(t);
         }
     }
 
     public int[] despacharMasRedituables(int n){
+
         int[] res = new int[n];
         for (int i = 0 ; i<n;i++){
 
@@ -51,9 +57,11 @@ public class BestEffort {
 
 
             if (this.ciudadesMayorGanancia.isEmpty()){
+
                 this.ciudadesMayorGanancia.add(actual.origen);
             }
             if (this.ciudadesMayorPerdida.isEmpty()){
+
                 this.ciudadesMayorPerdida.add(actual.destino);
             }
 
@@ -66,19 +74,24 @@ public class BestEffort {
 
         
             if(mayorGanancia.getEarnings() < origenActual.getEarnings()){
+
                 this.ciudadesMayorGanancia.set(0,actual.origen);
             }else if(mayorGanancia.getEarnings() == origenActual.getEarnings()){
+
                 this.ciudadesMayorGanancia.add(actual.origen);
             }
 
             if(mayorPerdida.getLosses()> destinoActual.getLosses()){
+
                 this.ciudadesMayorPerdida.set(0,actual.destino);
             }else if(mayorPerdida.getLosses() == origenActual.getLosses()){
+
                 this.ciudadesMayorPerdida.add(actual.destino);
             }
 
 
             if(this.superavit.tamaño() == 0 ){
+
                 this.superavit.encolar(actual.origen);
 
             }
@@ -87,9 +100,11 @@ public class BestEffort {
             Ciudad mayorSuperavit = this.ciudades[iDraiz];
            
             if(origenActual.getSuperavit() >mayorSuperavit.getSuperavit()){
+
                 this.superavit = new Heap<>(this.maxComparator);
                 this.superavit.encolar(actual.origen);
             }else if (this.ciudades[actual.origen].getSuperavit() == mayorSuperavit.getSuperavit()){
+
                 this.superavit.encolar(actual.origen);
             }
         
@@ -99,6 +114,7 @@ public class BestEffort {
     }
 
     public int[] despacharMasAntiguos(int n){
+
         int[] res = new int[n];
         for (int i = 0 ; i<n;i++){
 
@@ -112,11 +128,13 @@ public class BestEffort {
 
             
             if (this.ciudadesMayorGanancia.isEmpty()){
+
                 this.ciudadesMayorGanancia.add(actual.origen);
             }
             
 
             if (this.ciudadesMayorPerdida.isEmpty()){
+
                 this.ciudadesMayorPerdida.add(actual.destino);
             }
 
@@ -128,30 +146,38 @@ public class BestEffort {
 
 
             if(mayorGanancia.getEarnings()< origenActual.getEarnings()){
+
                 this.ciudadesMayorGanancia.set(0,actual.origen);
             }else if(mayorGanancia.getEarnings() == origenActual.getEarnings()){
+
                 this.ciudadesMayorGanancia.add(actual.origen);
             }
 
 
             if(mayorPerdida.getLosses()> destinoActual.getLosses()){
+
                 this.ciudadesMayorPerdida.set(0,actual.destino);
+
             }else if(mayorPerdida.getLosses() == origenActual.getLosses()){
+
                 this.ciudadesMayorPerdida.add(actual.destino);
             }
 
 
             if(this.superavit.tamaño() == 0 ){
+
                 this.superavit.encolar(actual.origen);
             }
 
             int iDraiz = (int) superavit.consultarRaiz();
             Ciudad mayorSuperavit = this.ciudades[iDraiz];
-            
+
             if(origenActual.getSuperavit() > mayorSuperavit.getSuperavit()){
+
                 this.superavit = new Heap<>(this.maxComparator);
                 this.superavit.encolar(actual.origen);
             }else if (origenActual.getSuperavit() == mayorSuperavit.getSuperavit()){
+
                 this.superavit.encolar(actual.origen);
             }
         }
@@ -176,7 +202,9 @@ public class BestEffort {
     }
 
     public int gananciaPromedioPorTraslado(){
+
         if (this.cantidadDeTrasladosDespachados == 0){
+            
             return 0;
         }
         return (Math.round(this.gananciaTotal/this.cantidadDeTrasladosDespachados));
