@@ -159,27 +159,27 @@ public class BestEffort {
         return res;
     }
 
-    public int ciudadConMayorSuperavit(){
+    public int ciudadConMayorSuperavit(){ //! No cumplimos requisito, deberia ser O(1);
 
-        int actual= (int) superavit.desencolarRaiz();
-        return actual;
+        int actual= (int) superavit.desencolarRaiz(); //? Complijidad O(log(n));
+        return actual; //? termina teniendo complejidad O(log(n));
     }
 
     public ArrayList<Integer> ciudadesConMayorGanancia(){
         
-        return this.ciudadesMayorGanancia;
+        return this.ciudadesMayorGanancia; //? O(1);
     }
 
     public ArrayList<Integer> ciudadesConMayorPerdida(){
         
-        return this.ciudadesMayorPerdida;
+        return this.ciudadesMayorPerdida; //? O(1);
     }
 
     public int gananciaPromedioPorTraslado(){
-        if (this.cantidadDeTrasladosDespachados == 0){
-            return 0;
+        if (this.cantidadDeTrasladosDespachados == 0){ //? O(1);
+            return 0; //? O(1);
         }
-        return (Math.round(this.gananciaTotal/this.cantidadDeTrasladosDespachados));
+        return (Math.round(this.gananciaTotal/this.cantidadDeTrasladosDespachados)); //? O(1) ish;
     }
     
 }
