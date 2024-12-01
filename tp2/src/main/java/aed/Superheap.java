@@ -72,6 +72,8 @@ public class Superheap {
         return desencolado.getTraslado();
 
     }
+
+    
     public void actualizarPosEnElOtro(Heap<Handle> h1, Heap<Handle> h2){
         for(int i = 0; i<h1.tamaño();i++){
 

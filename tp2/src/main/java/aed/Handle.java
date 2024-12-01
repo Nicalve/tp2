@@ -6,29 +6,29 @@ public class Handle implements Comparable<Handle> {
     private int posPropioHeap;
 
     public Handle(Traslado traslado) {
-        this.traslado = traslado;
-        this.posPropioHeap = -1;
-        this.posOtroHeap = -1;
+        this.traslado = traslado; //? Complejidad O(1);
+        this.posPropioHeap = -1; //? Complejidad O(1);
+        this.posOtroHeap = -1; //? Complejidad O(1);
     }
 
     public Traslado getTraslado() {
-        return this.traslado;
+        return this.traslado; //? Complejidad O(1);
     }
 
     public int getPosPropioHeap() {
-        return this.posPropioHeap;
+        return this.posPropioHeap; //? Complejidad O(1);
     }
 
     public int getPosOtroHeap() {
-        return this.posOtroHeap;
+        return this.posOtroHeap; //? Complejidad O(1);
     }
 
     public void setPosPropioHeap(int pos) {
-        this.posPropioHeap = pos;
+        this.posPropioHeap = pos; //? Complejidad O(1);
     }
 
     public void setPosOtroHeap(int pos) {
-        this.posOtroHeap = pos;
+        this.posOtroHeap = pos; //? Complejidad O(1);
     }
 
 
