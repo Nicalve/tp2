@@ -10,19 +10,8 @@ public class Heap<T extends Comparable<T>>{
 
     public Heap(Comparator<T> comparador) {
         
-        super(); //! No se que chota hace esta funcion
         this.elementos = new ArrayList<>();
         this.comparador = comparador;
-    }
-    public Heap(T[] secuencia, Comparator<T> comparador) {
-
-        this.elementos = new ArrayList<>();
-        this.comparador = comparador;
-        for (T elemento : secuencia) {
-
-            this.elementos.add(elemento);
-            heapify(); 
-        } //! Hay que rechequear bien la complejidad de esta parte, si no me quivoco por como lo hicimos nos termina dando O(n**2log(n)), un desastre jeje;
     }
 
     public int encolar(T valor) {
@@ -55,7 +44,7 @@ public class Heap<T extends Comparable<T>>{
         T ult = this.elementos.get(this.elementos.size()-1); //? O(1);
 
         this.elementos.set(indice, ult); //? O(1);
-        this.elementos.remove(this.elementos.size()-1); //? .remove tiene O8(n) generalmente, pero al ser el ultimo elemento de la lista pasa a ser O(1);
+        this.elementos.remove(this.elementos.size()-1); //? .remove tiene O(n) generalmente, pero al ser el ultimo elemento de la lista pasa a ser O(1);
         siftDown(indice); //? O(log(n)), ver sfitDown;
         
         //? Luego, la complejidad es O(log(n));
@@ -125,6 +114,7 @@ public class Heap<T extends Comparable<T>>{
 
         //? En todos los if se valida que HijoIzq y HijoDer sean menor que la longitud del ArrayList elementos. Por como se obtienen los hijos (recursivamente), como mucho se pueden obtener log(n) indices, siendo n el size de elementos.
 
+
         if(hijoDer < elementos.size() && hijoIzq < elementos.size()){
 
             comparadorHijos = comparador.compare(elementos.get(hijoIzq), elementos.get(hijoDer));
@@ -143,23 +133,9 @@ public class Heap<T extends Comparable<T>>{
             siftDown(hijoDer);
         }
 
-        if(mayor != indice){
-
-            ultimapos = swap(indice,mayor);
-            siftDown(mayor);
-        }
-
         //? Dado que siftDown es una funcion recursiva que puede llamarse a si misma log(elementos.size) veces, y dentro de cada if, aparte de la recursion, se llama a swap que tiene O(1) La complejidad final de siftDown es O(log(elementos.size()) ≈ O(log(n)); 
 
         return ultimapos;
-    }
-
-    private void heapify() { //! Hay que ver bien si cumplimos la comlejidad o si bardeamos :) ;
-
-        for (int j = 0; j < this.elementos.size(); j++) {
-
-            siftDown(j);
-        }
     }
 
     @Override

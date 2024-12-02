@@ -23,12 +23,12 @@ public class Superheap {
 
     public Superheap() {
 
-        reditoComparator reditocomparador = new reditoComparator();
+        reditoComparator reditocomparador = new reditoComparator(); 
         antiguedadComparator antiguedadcomparador = new antiguedadComparator();
 
         this.reditoHeap = new Heap<>(reditocomparador);
         this.antiguedadHeap = new Heap<>( antiguedadcomparador );
-    }
+    }//? O(1)
 
     public void superencolar(Traslado traslado) {
 
@@ -38,27 +38,28 @@ public class Superheap {
 
         mihandle.setPosPropioHeap(pos);
         otroHandle.setPosOtroHeap(pos);
-        actualizarPosEnElOtro(this.reditoHeap,this.antiguedadHeap);
+        //? Todas las asignaciones son O(1)
+        actualizarPosEnElOtro(this.reditoHeap,this.antiguedadHeap); //? O(n)
 
-        int posotro = antiguedadHeap.encolar(otroHandle);
+        int posotro = antiguedadHeap.encolar(otroHandle); //? O(log(n))
 
         otroHandle.setPosPropioHeap(posotro);
         mihandle.setPosOtroHeap(posotro);
-        actualizarPosEnElOtro(this.antiguedadHeap,this.reditoHeap);
-    }
+        actualizarPosEnElOtro(this.antiguedadHeap,this.reditoHeap); //? O(n)
+    } //? la funcion termina teniendo complejidad O(2n)+O(2log(n)) == O(n)
 
 
     public Traslado desencolarRedito(){
 
-        Handle desencolado = (Handle) reditoHeap.desencolarRaiz();
+        Handle desencolado = (Handle) reditoHeap.desencolarRaiz(); //? O(log(n))
 
-        actualizarPosEnElOtro(this.reditoHeap,this.antiguedadHeap);
-        antiguedadHeap.desencolar(desencolado.getPosOtroHeap());
-        actualizarPosEnElOtro(this.antiguedadHeap, this.reditoHeap);
+        actualizarPosEnElOtro(this.reditoHeap,this.antiguedadHeap); //? O(n)
+        antiguedadHeap.desencolar(desencolado.getPosOtroHeap());//? O(log(n))
+        actualizarPosEnElOtro(this.antiguedadHeap, this.reditoHeap);//? O(n)
 
         return desencolado.getTraslado();
 
-    }
+    } //? 
 
 
     public Traslado desencolarAntiguedad(){

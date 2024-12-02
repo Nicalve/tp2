@@ -24,7 +24,11 @@ public class HeapTest {
     @Test
     void testConstructorConSecuencia() {
         Integer[] secuencia = {4, 2, 8, 5, 1};
-        Heap<Integer> queue = new Heap<>(secuencia, (a, b) -> a.compareTo(b));
+
+        Heap<Integer> queue = new Heap<>((a, b) -> a.compareTo(b));
+        for (int elemento : secuencia){
+            queue.encolar(elemento);
+        }
 
         assertEquals(5, queue.tamaño());
     }
@@ -65,8 +69,10 @@ public class HeapTest {
     @Test
     void EncolarYDesencolarMuchos(){
         Integer[] secuencia = {4, 2, 8, 5, 1};
-        Heap<Integer> queue = new Heap<>(secuencia, (a, b) -> a.compareTo(b));
-
+        Heap<Integer> queue = new Heap<>((a, b) -> a.compareTo(b));
+        for (int elemento : secuencia){
+            queue.encolar(elemento);
+        }
         assertEquals(5, queue.tamaño());
         for(int i = 2; i < 5; i++){
             queue.encolar(i*3);
@@ -96,7 +102,10 @@ public class HeapTest {
     @Test
     void desencolarCualquiera(){
         Integer[] secuencia = {16,35,19,9,11,93,82,42,25,23,68,68};
-        Heap<Integer> queue = new Heap<>(secuencia, (a, b) -> a.compareTo(b));
+        Heap<Integer> queue = new Heap<>((a, b) -> a.compareTo(b));
+        for (int elemento : secuencia){
+            queue.encolar(elemento);
+        }
 
         assertEquals(68, queue.desencolar((queue.tamaño()-1)/2));
         assertEquals(68,queue.desencolar(1));

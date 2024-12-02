@@ -21,17 +21,17 @@ public class BestEffort {
         this.ciudadesMayorGanancia = new ArrayList<>();
         this.ciudadesMayorPerdida = new ArrayList<>();
 
-    for (int i = 0 ; i<cantCiudades;i++){ // este for es O(|ciudades|)
+    for (int i = 0 ; i<cantCiudades;i++){ //? este for es O(|ciudades|)
         Ciudad nuevaciudad = new Ciudad(i); 
         this.ciudades[i] = nuevaciudad;
     }
-    for(Traslado t :traslados){
+    for(Traslado t :traslados){   //? este for es O(|Traslado|)
         manager.superencolar(t);
     }
    
     }
 
-    public void registrarTraslados(Traslado[] traslados){   // este for es O(|Traslado|)
+    public void registrarTraslados(Traslado[] traslados){
         for(Traslado t :traslados){
             manager.superencolar(t);
         }
@@ -39,16 +39,17 @@ public class BestEffort {
 
     public int[] despacharMasRedituables(int n){
         int[] res = new int[n];
+        
         for (int i = 0 ; i<n;i++){
 
-            Traslado actual = manager.desencolarRedito();
+            Traslado actual = manager.desencolarRedito(); //? O(2log(T)) == O(log(T)), ver desencolarRedito en Superheap
 
             res[i]=actual.id;
             this.cantidadDeTrasladosDespachados += 1;
             this.gananciaTotal += actual.gananciaNeta;
             this.ciudades[actual.origen].addEarnings(actual.gananciaNeta);
             this.ciudades[actual.destino].addLosses(actual.gananciaNeta);
-
+            //? todas las asignaciones son O(1)
 
             if (this.ciudadesMayorGanancia.isEmpty()){
                 this.ciudadesMayorGanancia.add(actual.origen); 
@@ -79,7 +80,7 @@ public class BestEffort {
 
 
             if(this.superavit.tamaño() == 0 ){
-                this.superavit.encolar(actual.origen);
+                this.superavit.encolar(actual.origen);//? O(log(C))
 
             }
 
@@ -88,15 +89,15 @@ public class BestEffort {
            
             if(origenActual.getSuperavit() >mayorSuperavit.getSuperavit()){
                 this.superavit = new Heap<>(this.maxComparator);
-                this.superavit.encolar(actual.origen);
+                this.superavit.encolar(actual.origen);//? esto es O(log(C)), pero como anteriormente creamos un heap vacio nuevo seria O(1)
             }else if (this.ciudades[actual.origen].getSuperavit() == mayorSuperavit.getSuperavit()){
-                this.superavit.encolar(actual.origen);
+                this.superavit.encolar(actual.origen);//? O(log(C))
             }
-        
+        //? todos los if y elseif son comparaciones (O(1)) y asignaciones (O(1))
         }
         
         return res;
-    }
+    }//? al final de este for termina siendo O(n(log(T)+log(C)))
 
     public int[] despacharMasAntiguos(int n){
         int[] res = new int[n];
@@ -157,13 +158,11 @@ public class BestEffort {
         }
         
         return res;
-    }
+    }//? la complejidad de esta funcion es exactamente lo mismo que en la de despacharMasRedituables.
 
-    public int ciudadConMayorSuperavit(){ //! No cumplimos requisito, deberia ser O(1);
+    public int ciudadConMayorSuperavit(){ 
 
-        //int actual= (int) superavit.desencolarRaiz(); //? Complijidad O(log(n));
-        //return actual; //? termina teniendo complejidad O(log(n));
-        return this.superavit.get(0);
+        return this.superavit.consultarRaiz(); //? Complejidad O(1)
     }
 
     public ArrayList<Integer> ciudadesConMayorGanancia(){
