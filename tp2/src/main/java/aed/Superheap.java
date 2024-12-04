@@ -37,10 +37,10 @@ public class Superheap {
 
         mihandle.setContraparte(otroHandle);
         otroHandle.setContraparte(mihandle);
+    
 
         int pos = reditoHeap.encolar(mihandle);
-
-
+        
         mihandle.setPosPropioHeap(pos);
         otroHandle.setPosOtroHeap(pos);
         //? Todas las asignaciones son O(1)
@@ -51,6 +51,7 @@ public class Superheap {
         otroHandle.setPosPropioHeap(posotro);
         mihandle.setPosOtroHeap(posotro);
         //actualizarPosEnElOtro(this.antiguedadHeap,this.reditoHeap); //? O(n)
+        
     } //? la funcion termina teniendo complejidad O(2n)+O(2log(n)) == O(n)
 
 
@@ -78,5 +79,4 @@ public class Superheap {
         return desencolado.getTraslado();
 
     }
-    
 }

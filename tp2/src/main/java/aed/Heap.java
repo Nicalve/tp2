@@ -27,20 +27,25 @@ public class Heap<T extends Comparable<T>>{
     }
 
     public T desencolarRaiz() {
-        T max = elementos.get(0); //? O(1);
-        T ult = elementos.remove(elementos.size() - 1); //? O(1); 
+        T max = null;
+        if (elementos.size() == 1){
+            max = elementos.remove(0);
 
+        }
         if (!elementos.isEmpty()) { 
-
+        max = elementos.get(0); //? O(1);
+        T ult = elementos.remove(elementos.size() - 1); //? O(1); 
             elementos.set(0, ult); //? O(1)
             siftDown(0); //? O(log(n)), ver sfitDown;
-        }
+        
+         }
         return max; //? Luego, la complejidad es O(log(n));
     }
 
     public T desencolar(int indice){
-
-        T desencolado = this.elementos.get(indice); //? O(1);
+        T  desencolado = null;
+        if(!elementos.isEmpty() && indice < this.elementos.size()){
+        desencolado = this.elementos.get(indice); //? O(1);
         T ult = this.elementos.get(this.elementos.size()-1); //? O(1);
 
         this.elementos.set(indice, ult); //? O(1);
@@ -48,7 +53,9 @@ public class Heap<T extends Comparable<T>>{
         siftDown(indice); //? O(log(n)), ver sfitDown;
         
         //? Luego, la complejidad es O(log(n));
-        return desencolado; 
+        }
+        return desencolado;
+
     }
 
     public int tamaño() {

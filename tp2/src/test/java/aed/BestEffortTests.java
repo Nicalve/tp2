@@ -43,6 +43,7 @@ public class BestEffortTests {
         @Test
         void registrarMultiples() {
             BestEffort sis = new BestEffort(cantCiudades, listaTraslados);
+            
             Traslado[] nuevos = new Traslado[] {
                 new Traslado(4, 0, 1, 400, 40),
                 new Traslado(5, 1, 2, 500, 50),

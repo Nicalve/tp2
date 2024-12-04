@@ -32,16 +32,12 @@ public class Handle implements Comparable<Handle> {
         this.posOtroHeap = pos; //? Complejidad O(1);
     }
 
-    public Handle getContraparte() {
-        return this.contraparte;
+    public void setContraparte(Handle contraparte) {
+        this.contraparte = contraparte;//? Complejidad O(1);
     }
 
-    public void setContraparte(Handle contraparte) {
-        this.contraparte = contraparte;
-    }
-    
     public void actualizar() {
-        this.contraparte.setPosOtroHeap(this.posPropioHeap);
+        this.contraparte.setPosOtroHeap(this.posPropioHeap);//? Complejidad O(1);
     }
     
 
@@ -54,6 +50,6 @@ public class Handle implements Comparable<Handle> {
 
     @Override
     public String toString() {
-        return "Handle {Traslado: " + traslado + ", posPropioHeap: " + posPropioHeap + ", posOtroHeap: " + posOtroHeap + "}";
+        return "Handle {Traslado: " + traslado + ", posPropioHeap: " + posPropioHeap + ", posOtroHeap: " + posOtroHeap + contraparte +"}";
     }
 }

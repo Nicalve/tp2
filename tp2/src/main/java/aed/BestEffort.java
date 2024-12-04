@@ -26,6 +26,7 @@ public class BestEffort {
         this.ciudades[i] = nuevaciudad;
     }
     for(Traslado t :traslados){   //? este for es O(|Traslado|)
+       
         manager.superencolar(t);
     }
    
