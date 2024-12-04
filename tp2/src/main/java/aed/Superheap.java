@@ -34,18 +34,23 @@ public class Superheap {
 
         Handle mihandle = new Handle(traslado); 
         Handle otroHandle = new Handle(traslado);
+
+        mihandle.setContraparte(otroHandle);
+        otroHandle.setContraparte(mihandle);
+
         int pos = reditoHeap.encolar(mihandle);
+
 
         mihandle.setPosPropioHeap(pos);
         otroHandle.setPosOtroHeap(pos);
         //? Todas las asignaciones son O(1)
-        actualizarPosEnElOtro(this.reditoHeap,this.antiguedadHeap); //? O(n)
+        //actualizarPosEnElOtro(this.reditoHeap,this.antiguedadHeap); //? O(n)
 
         int posotro = antiguedadHeap.encolar(otroHandle); //? O(log(n))
 
         otroHandle.setPosPropioHeap(posotro);
         mihandle.setPosOtroHeap(posotro);
-        actualizarPosEnElOtro(this.antiguedadHeap,this.reditoHeap); //? O(n)
+        //actualizarPosEnElOtro(this.antiguedadHeap,this.reditoHeap); //? O(n)
     } //? la funcion termina teniendo complejidad O(2n)+O(2log(n)) == O(n)
 
 
@@ -53,9 +58,9 @@ public class Superheap {
 
         Handle desencolado = (Handle) reditoHeap.desencolarRaiz(); //? O(log(n))
 
-        actualizarPosEnElOtro(this.reditoHeap,this.antiguedadHeap); //? O(n)
+       // actualizarPosEnElOtro(this.reditoHeap,this.antiguedadHeap); //? O(n)
         antiguedadHeap.desencolar(desencolado.getPosOtroHeap());//? O(log(n))
-        actualizarPosEnElOtro(this.antiguedadHeap, this.reditoHeap);//? O(n)
+       // actualizarPosEnElOtro(this.antiguedadHeap, this.reditoHeap);//? O(n)
 
         return desencolado.getTraslado();
 
@@ -66,27 +71,12 @@ public class Superheap {
         
         Handle desencolado = (Handle) antiguedadHeap.desencolarRaiz();
 
-        actualizarPosEnElOtro(this.antiguedadHeap,this.reditoHeap);
+        //actualizarPosEnElOtro(this.antiguedadHeap,this.reditoHeap);
         reditoHeap.desencolar(desencolado.getPosOtroHeap());
-        actualizarPosEnElOtro(this.reditoHeap, this.antiguedadHeap);
+        //actualizarPosEnElOtro(this.reditoHeap, this.antiguedadHeap);
 
         return desencolado.getTraslado();
 
     }
-
     
-    public void actualizarPosEnElOtro(Heap<Handle> h1, Heap<Handle> h2){
-        for(int i = 0; i<h1.tamaño();i++){
-
-            Handle actual = (Handle)h1.get(i);
-            int posenelotro = actual.getPosOtroHeap();
-
-            actual.setPosPropioHeap(i);
-            if (posenelotro< h2.tamaño() && posenelotro > -1){
-
-                Handle otro = (Handle)h2.get(posenelotro);
-                otro.setPosOtroHeap(i);
-            }
-        }
-    }
 }

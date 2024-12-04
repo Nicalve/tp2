@@ -69,11 +69,13 @@ public class Heap<T extends Comparable<T>>{
             //? Las funciones de Handle tienen O(1), ver en Handle.java;
             handleI.setPosPropioHeap(j);
             handleJ.setPosPropioHeap(i);
+            handleI.actualizar();
+            handleJ.actualizar();
 
             //? Complejidad O(1);
             elementos.set(i, elementos.get(j));
             elementos.set(j, tempI);
-
+            
             return j; //? Sumando las complejidades qeuda O(1);
         }
 
